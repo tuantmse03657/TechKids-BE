@@ -46,5 +46,6 @@ myAngular.directive("lx",[function(){
       page: "=",
       size: "="
     },
+    controller :"HomeController"
   }
 }])
