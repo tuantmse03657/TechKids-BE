@@ -127,15 +127,17 @@ function($scope, $state, $stateParams){
   {
     $scope.allpages.push($scope.singlepage);
   }
-    $scope.currenpage = $scope.allpages[$("lx").attr("page")-1];
+
   /////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
   if ($stateParams.girl!=null && $stateParams.index == null) {
     $scope.girls.push($stateParams.girl);
+    $scope.allpages[$scope.allpages.length-1].push($stateParams.girl);
   }
   if ($stateParams.girl!=null && $stateParams.index != null) {
     $scope.currenpage[$stateParams.index] = $stateParams.girl;
   }
+  $scope.currenpage = $scope.allpages[$("lx").attr("page")-1];
   $scope.delete = function(index) {
     $scope.currenpage.splice(index, 1);
   }
