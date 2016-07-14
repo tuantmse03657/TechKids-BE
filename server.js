@@ -55,13 +55,22 @@ app.route('/api/hot-girl')
          }
        }
      }
-     if (request.body.girl) {
+     if (request.body.type){
+       if(request.body.type=="Insert"){
+         girls.splice(request.body.index,0,request.body.girl);
+         girls[request.body.index].id = girls.length - 1;
+       }
+       if(request.body.type == "Double"){
+         girls.splice(request.body.index,0,request.body.girl);
+       }
+     }
+     else if (request.body.girl) {
        if(request.body.index > -1){
          girls[request.body.index] = request.body.girl;
        }
        else{
          girls.push(request.body.girl);
-         girls[girls.length - 1].id = girls.length - 1;
+         girls[girls.length-1].id = girls.length-1;
        }
      }
 

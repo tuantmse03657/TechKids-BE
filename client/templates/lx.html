@@ -12,7 +12,8 @@
     <td>{{girl.age}}</td>
     <td>{{girl.facebook}}</td>
     <td>{{girl.password}}</td>
-    <td><input type="button" value="Delete" ng-click="delete($index)"><input type="button" value="Update" ng-click="update(girl, $index)"></td>
+    <td><input type="button" value="Delete" ng-click="delete($index)"><input type="button" value="Update" ng-click="update(girl, $index)">
+    <input type="button" value="Insert" ng-click="insert($index)"><input type="button" value="Double" ng-click="double(girl,$index)"></td>
   </tr>
 </table>
 <div class="pagination" ng-class="{'pagination--active' : n === page}" ng-repeat="n in pages" ng-click="goToPage(n)">{{n}}</div>

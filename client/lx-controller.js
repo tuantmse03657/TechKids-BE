@@ -1,7 +1,6 @@
 myAngular.controller("LXController", ["$scope", "$state", "$stateParams","$http",
 function($scope, $state, $stateParams,$http){
   $scope.data = [];
-
   $http.get("/api/hot-girl").then(function(response){
      $scope.data = response.data;
      $scope.goToPage($scope.page);
@@ -30,11 +29,20 @@ function($scope, $state, $stateParams,$http){
   $scope.update = function(girl, index) {
     $state.go("update-girl", { girl:girl, index: ($scope.page - 1) * $scope.size + index });
   }
-
+  $scope.insert = function(index){
+    $state.go("insert-girl", { index: ($scope.page - 1) * $scope.size + index ,type:"Insert"});
+  }
+  $scope.double = function(girl, index){
+    $http.post('/api/hot-girl',{ girl:girl, index: ($scope.page - 1) * $scope.size + index ,type:"Double"}).then(function(res){
+      console.log("send request");
+    })
+    $scope.fetchData();
+    $state.reload();
+    $scope.goToPage($scope.page);
+  }
   $scope.pages = [];
-  for (var n = 0; n < Math.ceil($scope.data.length/$scope.size); n++) {
+  for (var n = 0; n < Math.ceil(5.2); n++) {
     $scope.pages[n] = n + 1;
   };
-
   $scope.goToPage($scope.page);
 }]);

@@ -22,7 +22,12 @@ myAngular.config(function($stateProvider, $urlRouterProvider){
     controller: "GirlController",
     params: {girl: null, index: -1}
   });
-
+  $stateProvider.state('insert-girl', {
+    url: "/insert-girl",
+    templateUrl: "templates/add-girl.html",
+    controller: "GirlController",
+    params: {girl: null, index: -1, type:null}
+  });
   $stateProvider.state('about-us', {
     url: "/about-us",
     templateUrl: "templates/about-us.html"
